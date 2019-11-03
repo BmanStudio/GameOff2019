@@ -10,7 +10,7 @@ namespace Game.Controls
         [SerializeField] SpriteRenderer arrowSprite;
         [SerializeField] SpriteRenderer arrowFill;
         [SerializeField] float arrowWidthExpensionRate = 2f;
-        [SerializeField] float arrowWidthExpensionRateInSlowMo = 20f;
+        //[SerializeField] float arrowWidthExpensionRateInSlowMo = 20f;
         [SerializeField] float powerToForceFactor = 10f;
         [SerializeField] float powerToForceFactorInSlowMo = 40f;
 
@@ -20,7 +20,7 @@ namespace Game.Controls
         private float power;
         private bool isCharging;
         Rigidbody2D rb;
-        private bool isEnabled;
+        public bool isEnabled;
 
         GameManager gm;
         void Start()
@@ -28,6 +28,11 @@ namespace Game.Controls
             power = minPower;
             rb = GetComponent<Rigidbody2D>();
             gm = FindObjectOfType<GameManager>();
+            
+            if (!isEnabled)
+            {
+                rb.AddForce(Vector3.right * 200);
+            }
         }
         void Update()
         {
@@ -42,14 +47,14 @@ namespace Game.Controls
                 arrowFill.transform.localScale = new Vector3(power, 1, 1);
                 if (Input.GetMouseButton(0))
                 {
-                    if (gm.GetIsSLowMo())
+/*                    if (gm.GetIsSLowMo())
                     {
                         power = Mathf.Clamp01(power + Time.deltaTime * arrowWidthExpensionRateInSlowMo);
                     }
                     else
-                    {
-                        power = Mathf.Clamp01(power + Time.deltaTime * arrowWidthExpensionRate);
-                    }
+                    {*/
+                        power = Mathf.Clamp01(power + Time.unscaledDeltaTime * arrowWidthExpensionRate);
+                    /*}*/
                     isCharging = true;
                 }
                 else

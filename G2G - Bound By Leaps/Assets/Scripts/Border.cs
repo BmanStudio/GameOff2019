@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Game.Controls;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Game.Interactions
@@ -27,10 +28,17 @@ namespace Game.Interactions
         {
             if (collision.transform.root.CompareTag("Player"))
             {
-                if (timer <= 0)
+                print(collision.name);
+                if (collision.GetComponent<PlayerController>() != null)
                 {
-                    enterSlowMoArea.Invoke();
-                    timer = slowMoCD;
+                    if (collision.GetComponent<PlayerController>().isEnabled)
+                    {
+                        if (timer <= 0)
+                        {
+                            enterSlowMoArea.Invoke();
+                            timer = slowMoCD;
+                        }
+                    }
                 }
             }
         }

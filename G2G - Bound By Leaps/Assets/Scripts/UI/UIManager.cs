@@ -21,13 +21,13 @@ public class UIManager : MonoBehaviour
     {
         if (playerIndex == 0)
         {
-            leftShade.SetActive(true);
-            rightShade.SetActive(false);
+            rightShade.SetActive(true);
+            leftShade.SetActive(false);
         }
         else if (playerIndex == 1)
         {
-            rightShade.SetActive(true);
-            leftShade.SetActive(false);
+            leftShade.SetActive(true);
+            rightShade.SetActive(false);
         }
     }
 }
