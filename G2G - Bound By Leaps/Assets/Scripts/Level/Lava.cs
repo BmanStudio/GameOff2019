@@ -2,6 +2,8 @@
 
 public class Lava : MonoBehaviour
 {
+    [SerializeField] int damage = 20;
+
     [SerializeField] float moveUpSpeed = 1f;
 
     [SerializeField] float addForceWhenGhoulFalls = 5f;
@@ -16,6 +18,11 @@ public class Lava : MonoBehaviour
 
     float timerForPopParticles = 0;
 
+    [SerializeField] float cdBetweenDamage = 1.5f;
+    float leftGhoulTimer = 0;
+    float rightGhoulTimer = 0;
+
+
     private void Start()
     {
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), midWall);
@@ -27,6 +34,9 @@ public class Lava : MonoBehaviour
         MoveUp();
 
         LavaPopVFX();
+
+        leftGhoulTimer += Time.deltaTime;
+        rightGhoulTimer += Time.deltaTime;
     }
 
     private void LavaPopVFX()
@@ -64,7 +74,20 @@ public class Lava : MonoBehaviour
 
             Vector2 directionFromGhoulToWall = new Vector2(borderX, pointAtBorderY) + (Vector2.up * (distanceToWall * 4));
             Rigidbody2D rigidbody = collision.transform.GetComponent<Rigidbody2D>();
-            rigidbody.AddForce(directionFromGhoulToWall * addForceWhenGhoulFalls);
+            if (distanceToWall < .6) // todo change this shit
+            {
+                rigidbody.velocity = Vector2.up * 50;
+            }
+            else
+            {
+                rigidbody.AddForce(directionFromGhoulToWall * addForceWhenGhoulFalls);
+
+            }
+            if (rightGhoulTimer >= cdBetweenDamage)
+            {
+                collision.transform.GetComponent<Health>().TakeDamage(damage);
+                rightGhoulTimer = 0;
+            }
         }
 
         if (collision.transform.CompareTag("LeftGhoul"))
@@ -79,12 +102,17 @@ public class Lava : MonoBehaviour
             if (distanceToWall < .6) // todo change this shit
             {
                 rigidbody.velocity = Vector2.up * 50;
-                //directionFromGhoulToWall += ;
             }
             else
             {
                 rigidbody.AddForce(directionFromGhoulToWall * addForceWhenGhoulFalls);
 
+            }
+
+            if (leftGhoulTimer >= cdBetweenDamage)
+            {
+                collision.transform.GetComponent<Health>().TakeDamage(damage);
+                leftGhoulTimer = 0;
             }
         }
     }

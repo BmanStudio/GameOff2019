@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.PostProcessing;
 
 namespace Game.Manager
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] PostProcessVolume playerPostProcessVol;
+
         [SerializeField] float slowMoMultiplier = 0.5f;
-        [SerializeField] float slowMoMinScale = 0.2f;
+        [SerializeField] float slowMoMinScale = 0.1f;
 
         [SerializeField] UnityEvent leftPlayerEnabled;
         [SerializeField] UnityEvent rightPlayerEnabled;
@@ -23,10 +26,12 @@ namespace Game.Manager
             if (Input.GetKey(KeyCode.A))
             {
                 leftPlayerEnabled.Invoke();
+                ToggleSlowMo(false);
             }
             else if(Input.GetKey(KeyCode.D))
             {
                 rightPlayerEnabled.Invoke();
+                ToggleSlowMo(false);
             }
 
             if (isSlowMo)
@@ -36,10 +41,19 @@ namespace Game.Manager
             else
             {
                 currSlowMoDelta = Mathf.Clamp(currSlowMoDelta + (Time.deltaTime * slowMoMultiplier * 2), slowMoMinScale, 1f);
+                playerPostProcessVol.weight = 1 - (currSlowMoDelta - slowMoMinScale);
             }
             Time.timeScale = currSlowMoDelta;
             Time.fixedDeltaTime = Time.timeScale * .02f;
             //print(Time.timeScale);
+        }
+
+        public void ActiveVignetteFXSlowMotion(GameObject player)
+        {
+            Vignette vignette;
+            playerPostProcessVol.profile.TryGetSettings(out vignette);
+            vignette.center.value = Camera.main.WorldToViewportPoint(player.transform.position);
+            playerPostProcessVol.weight = 1 - (currSlowMoDelta - slowMoMinScale);
         }
 
         public void ToggleSlowMo(bool toggle)

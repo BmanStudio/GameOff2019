@@ -29,7 +29,6 @@ public class PushScreenUp : MonoBehaviour
             if (oldYPos == newYPos)
             {
                 needToMove = false;
-                print("done");
             }
             //Vector2 newPositionToMoveCamera = cameraPos + 
 /*

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2971248268230609047}
   - component: {fileID: 2971248268230609046}
   - component: {fileID: 2971248268230609040}
+  - component: {fileID: 6762079244538618441}
   m_Layer: 5
   m_Name: ScreenShade
   m_TagString: Untagged
@@ -28,7 +29,7 @@ RectTransform:
   m_GameObject: {fileID: 2971248268230609044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.38, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -89,3 +90,15 @@ MonoBehaviour:
   midWall: {fileID: 0}
   closeBorderWall: {fileID: 0}
   farBorderWall: {fileID: 0}
+--- !u!225 &6762079244538618441
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2971248268230609044}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

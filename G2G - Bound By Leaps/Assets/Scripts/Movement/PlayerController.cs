@@ -45,6 +45,11 @@ namespace Game.Controls
         {
             if (isEnabled)
             {
+                if (gm.GetIsSLowMo())
+                {
+                    gm.ActiveVignetteFXSlowMotion(gameObject);
+                }
+
                 Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 direction = new Vector2(
                     mousePosition.x - transform.position.x,
@@ -78,6 +83,11 @@ namespace Game.Controls
                         power = 0;
                     }
                 }
+            }
+            else
+            {
+                power = 0;
+                isCharging = false;
             }
         }
 
