@@ -412,11 +412,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3023950813715623394, guid: f9a8d15a189e0a44aa8bef61ebad993e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1c04e1da75860a34eb8130b7ef9a4543, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9a8d15a189e0a44aa8bef61ebad993e, type: 3}
 --- !u!1 &318975667
@@ -451,6 +446,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &465132217 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8234857590831008705, guid: 7488edca67a50c941b6106be200f6210,
+    type: 3}
+  m_PrefabInstance: {fileID: 8234857589829654484}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,6 +816,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1009808173}
   - component: {fileID: 1009808174}
+  - component: {fileID: 1009808175}
   m_Layer: 9
   m_Name: Lava
   m_TagString: Lava
@@ -849,8 +851,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9952b1661c3e6a24e8aa553ac6aeac3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.3
+  moveUpSpeed: 0.3
+  addForceWhenGhoulFalls: 3
   popVFX: {fileID: 8967923764259258724, guid: 9bed73648c6bab34cacfb66349c365c6, type: 3}
+  midWall: {fileID: 1354339106}
+  leftBorder: {fileID: 465132217}
+  rightBorder: {fileID: 1240819824}
+--- !u!61 &1009808175
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009808172}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!224 &1103525018 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2971248268230609045, guid: 5ac2dc83f87cfd24a8f4feda9ba08914,
@@ -967,6 +999,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1a1aba27a999fb44082b3d3eec0579b9, type: 2}
+    - target: {fileID: 8459569902607537618, guid: 7488edca67a50c941b6106be200f6210,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8459569902607537618, guid: 7488edca67a50c941b6106be200f6210,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7488edca67a50c941b6106be200f6210, type: 3}
 --- !u!114 &1220662652 stripped
@@ -992,7 +1034,6 @@ GameObject:
   - component: {fileID: 1222522389}
   - component: {fileID: 1222522392}
   - component: {fileID: 1222522391}
-  - component: {fileID: 1222522390}
   m_Layer: 9
   m_Name: Visuals
   m_TagString: Untagged
@@ -1014,32 +1055,6 @@ Transform:
   m_Father: {fileID: 1009808173}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1222522390
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222522388}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 054173b6a44b3a54ab60adeb9151ab83, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!23 &1222522391
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1086,6 +1101,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222522388}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!61 &1240819824 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 8234857590831008705, guid: 7488edca67a50c941b6106be200f6210,
+    type: 3}
+  m_PrefabInstance: {fileID: 1183083333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1354339102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,6 +1703,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Right Ghoul
       objectReference: {fileID: 0}
+    - target: {fileID: 3023950813541919804, guid: f9a8d15a189e0a44aa8bef61ebad993e,
+        type: 3}
+      propertyPath: m_TagString
+      value: RightGhoul
+      objectReference: {fileID: 0}
     - target: {fileID: 1292835017262572773, guid: f9a8d15a189e0a44aa8bef61ebad993e,
         type: 3}
       propertyPath: isEnabled
@@ -1950,11 +1976,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8234857590831008711, guid: 7488edca67a50c941b6106be200f6210,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 8234857590831008704, guid: 7488edca67a50c941b6106be200f6210,
         type: 3}
       propertyPath: onTouchBorder.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1973,12 +1994,7 @@ PrefabInstance:
     - target: {fileID: 8459569902607537618, guid: 7488edca67a50c941b6106be200f6210,
         type: 3}
       propertyPath: m_Offset.x
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8234857589898237109, guid: 7488edca67a50c941b6106be200f6210,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 1a1aba27a999fb44082b3d3eec0579b9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7488edca67a50c941b6106be200f6210, type: 3}

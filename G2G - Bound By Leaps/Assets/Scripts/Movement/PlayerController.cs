@@ -1,4 +1,5 @@
-﻿using Game.Manager;
+﻿using Game.Interactions;
+using Game.Manager;
 using UnityEngine;
 
 namespace Game.Controls
@@ -6,7 +7,7 @@ namespace Game.Controls
     public class PlayerController : MonoBehaviour
     {
 
-        [SerializeField] float minPower = 0.3f;
+        //[SerializeField] float minPower = 0.3f;
         [SerializeField] SpriteRenderer arrowSprite;
         [SerializeField] SpriteRenderer arrowFill;
         [SerializeField] float arrowWidthExpensionRate = 2f;
@@ -21,17 +22,23 @@ namespace Game.Controls
         private bool isCharging;
         Rigidbody2D rb;
         public bool isEnabled;
+        private Grabber grabber;
 
         GameManager gm;
         void Start()
         {
-            power = minPower;
+            //power = minPower;
+            grabber = GetComponent<Grabber>();
             rb = GetComponent<Rigidbody2D>();
             gm = FindObjectOfType<GameManager>();
-            
+
             if (!isEnabled)
             {
                 rb.AddForce(Vector3.right * 200);
+            }
+            else
+            {
+                rb.AddForce(Vector3.left * 300);
             }
         }
         void Update()
@@ -45,30 +52,49 @@ namespace Game.Controls
                     ).normalized;
                 arrowSprite.transform.up = direction;
                 arrowFill.transform.localScale = new Vector3(power, 1, 1);
-                if (Input.GetMouseButton(0))
+
+                if (grabber.GetIsGrabbing() || gm.GetIsSLowMo())
                 {
-/*                    if (gm.GetIsSLowMo())
+                    if (Input.GetMouseButton(0))
                     {
-                        power = Mathf.Clamp01(power + Time.deltaTime * arrowWidthExpensionRateInSlowMo);
+                        if (grabber.GetIsGrabCD() && !gm.GetIsSLowMo() && isCharging == false) { return; }
+                        power = Mathf.Clamp01(power + Time.unscaledDeltaTime * arrowWidthExpensionRate);
+                        isCharging = true;
                     }
                     else
-                    {*/
-                        power = Mathf.Clamp01(power + Time.unscaledDeltaTime * arrowWidthExpensionRate);
-                    /*}*/
-                    isCharging = true;
-                }
-                else
-                {
-                    if (isCharging)
                     {
-                        Vector3 force = direction * power * powerToForceFactor;
-                        if (gm.GetIsSLowMo()) { rb.velocity = Vector2.zero; force = direction * power * powerToForceFactorInSlowMo; }
-                        rb.AddForce(force, ForceMode2D.Impulse);// AddRelativeForce(force, ForceMode2D.Impulse);
-                        isCharging = false;
-                        gm.ToggleSlowMo(false);
-                        GetComponent<Grabber>().RealeseGrab();
+                        if (isCharging)
+                        {
+                            Vector3 force = direction * power * powerToForceFactor;
+                            if (gm.GetIsSLowMo())
+                            {
+                                rb.velocity = Vector2.zero; force = direction * power * powerToForceFactorInSlowMo;
+                            }
+                            rb.AddForce(force, ForceMode2D.Impulse);
+                            isCharging = false;
+                            gm.ToggleSlowMo(false);
+                            GetComponent<Grabber>().RealeseGrab();
+                        }
+                        power = 0;
                     }
-                    power = 0;
+                }
+            }
+        }
+
+        private void OnCollisionStay2D(Collision2D collision)
+        {
+            if (collision.transform.GetComponent<Border>() != null)
+            {
+                if (collision.transform.GetComponent<Border>() == grabber.border)
+                {
+                    if (!grabber.GetIsGrabbing())
+                    {
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            //print("im here1");
+                            grabber.GrabBorder(grabber.border);
+                        }
+                    }
                 }
             }
         }

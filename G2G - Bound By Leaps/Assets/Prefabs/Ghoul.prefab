@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 7103360017981382147}
   m_Layer: 0
   m_Name: Ghoul
-  m_TagString: Untagged
+  m_TagString: LeftGhoul
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef8600259160ab439e0055393bca99f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  grabCD: 0.2
 --- !u!114 &1292835017262572773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,14 +222,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e595037703c6f1041a28a49c3f74987f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minPower: 0.3
   arrowSprite: {fileID: 1292835017541897096}
   arrowFill: {fileID: 1964124230}
   arrowWidthExpensionRate: 2
-  arrowWidthExpensionRateInSlowMo: 15
-  powerToForceFactor: 11.3
-  powerToForceFactorInSlowMo: 20
-  resistanceToTopBorder: 5
+  powerToForceFactor: 11
+  powerToForceFactorInSlowMo: 15
+  resistanceToTopBorder: 6
+  isEnabled: 1
 --- !u!50 &3023950813541919776
 Rigidbody2D:
   serializedVersion: 4

@@ -28,7 +28,7 @@ namespace Game.Interactions
         {
             if (collision.transform.root.CompareTag("Player"))
             {
-                print(collision.name);
+                //print(collision.name);
                 if (collision.GetComponent<PlayerController>() != null)
                 {
                     if (collision.GetComponent<PlayerController>().isEnabled)

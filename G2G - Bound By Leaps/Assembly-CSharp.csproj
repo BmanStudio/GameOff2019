@@ -69,10 +69,10 @@
     <Compile Include="Assets\Scripts\Movement\Grabber.cs" />
     <Compile Include="Assets\Scripts\Movement\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PushScreenUp.cs" />
+    <Compile Include="Assets\Scripts\SelfDestroyParticle.cs" />
     <Compile Include="Assets\Scripts\Test.cs" />
     <Compile Include="Assets\Scripts\UI\ScreenShade.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
-    <Compile Include="Assets\SelfDestroyParticle.cs" />
     <None Include="Assets\Imports\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\Imports\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\Imports\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
@@ -94,6 +94,12 @@
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Animation.Runtime">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProGrids">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
@@ -103,8 +109,17 @@
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ProGrids.Editor">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.IK.Editor">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.IK.Runtime">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Lightweight.Runtime">
       <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Runtime.dll</HintPath>
@@ -118,6 +133,12 @@
     <Reference Include="Unity.Timeline">
       <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Animation.Triangle.Runtime">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="PsdPlugin">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
@@ -130,14 +151,35 @@
     <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
       <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Psdimporter.Editor">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.2D.Psdimporter.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEngineBridge.001">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Common.Runtime">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
       <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Animation.Editor">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
       <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
@@ -145,17 +187,14 @@
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.2D.Common.Editor">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProGrids">
-      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.ProGrids.Editor">
-      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>C:/Unity/game_off_2019/G2G - Bound By Leaps/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>

@@ -135,7 +135,7 @@ Transform:
   m_GameObject: {fileID: 8234857590831008710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.8, y: 0, z: 0}
-  m_LocalScale: {x: 0.3, y: 20, z: 1}
+  m_LocalScale: {x: 0.3, y: 20, z: 2}
   m_Children:
   - {fileID: 8234857589898237067}
   m_Father: {fileID: 0}
@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e143ced7bddec147b32ba67d22a0547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slowMoCD: 0.5
   onTouchBorder:
     m_PersistentCalls:
       m_Calls:
@@ -243,7 +244,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -4, y: 0}
+  m_Offset: {x: 4, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}

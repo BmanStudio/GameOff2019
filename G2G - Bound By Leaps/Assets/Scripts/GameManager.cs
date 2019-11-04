@@ -39,12 +39,12 @@ namespace Game.Manager
             }
             Time.timeScale = currSlowMoDelta;
             Time.fixedDeltaTime = Time.timeScale * .02f;
-            print(Time.timeScale);
+            //print(Time.timeScale);
         }
 
         public void ToggleSlowMo(bool toggle)
         {
-            print("pee" + toggle) ;
+            //print("pee" + toggle) ;
             isSlowMo = toggle;
         }
 
