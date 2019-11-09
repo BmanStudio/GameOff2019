@@ -116,7 +116,6 @@ GameObject:
   - component: {fileID: 8234857590831008711}
   - component: {fileID: 8234857590831008704}
   - component: {fileID: 8234857590831008705}
-  - component: {fileID: 1075554215}
   - component: {fileID: 8459569902607537618}
   - component: {fileID: 1288739862}
   m_Layer: 0
@@ -153,7 +152,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e143ced7bddec147b32ba67d22a0547, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowMoCD: 0.5
+  distanceToResetPlayer: 1.6
+  slowMoCD: 0.2
   onTouchBorder:
     m_PersistentCalls:
       m_Calls:
@@ -163,17 +163,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8234857590831008704}
           m_ObjectArgumentAssemblyTypeName: Game.Interactions.Border, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_MethodName: ToggleSlowMo
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -219,18 +208,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &1075554215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8234857590831008710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f2451e85efb70249b39b76e77e75373, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &8459569902607537618
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -244,7 +221,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}

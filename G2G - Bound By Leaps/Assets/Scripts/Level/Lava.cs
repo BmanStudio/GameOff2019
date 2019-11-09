@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Game.Controls;
+using Game.Interactions;
+using UnityEngine;
 
 public class Lava : MonoBehaviour
 {
@@ -15,6 +17,8 @@ public class Lava : MonoBehaviour
     [SerializeField] Collider2D leftBorder;
     [SerializeField] Collider2D rightBorder;
 
+    [SerializeField] float maxDistanceToGetPush = 2;
+    [SerializeField] float pushUpForce = 100;
 
     float timerForPopParticles = 0;
 
@@ -65,54 +69,75 @@ public class Lava : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("RightGhoul"))
+        if (collision.transform.CompareTag("LeftGhoul"))
         {
-            float borderX = rightBorder.transform.position.x;
-            float pointAtBorderY = transform.position.y + 8 + 6;
+            float borderX = leftBorder.transform.position.x;
+            float pointAtBorderY = transform.position.y + 8 + 10;
 
-            float distanceToWall = (Mathf.Abs(rightBorder.transform.position.x) - Mathf.Abs(collision.transform.position.x));
-
-            Vector2 directionFromGhoulToWall = new Vector2(borderX, pointAtBorderY) + (Vector2.up * (distanceToWall * 4));
+            float distanceToWall = leftBorder.GetComponent<Border>().GetDistanceFromPlayer();
+            Vector2 pointAtBorder = new Vector2(borderX, pointAtBorderY);
+            //Vector2 forceMultiplier = new Vector2(addForceWhenGhoulFalls, addForceWhenGhoulFalls);
+            Vector2 directionFromGhoulToWall = pointAtBorder.normalized;
+            Vector2 forceToApply = directionFromGhoulToWall * (addForceWhenGhoulFalls * (1 - (1 / distanceToWall)));
+            //print(distanceToWall);
             Rigidbody2D rigidbody = collision.transform.GetComponent<Rigidbody2D>();
-            if (distanceToWall < .6) // todo change this shit
+            if (distanceToWall < maxDistanceToGetPush && distanceToWall != Mathf.Infinity)
             {
-                rigidbody.velocity = Vector2.up * 50;
+                if (rigidbody.GetComponent<Grabber>().GetIsGrabbing())
+                {
+                    rigidbody.velocity = Vector2.up * pushUpForce;
+                }
+                else
+                {
+                    rigidbody.velocity = Vector2.up * pushUpForce;
+                    rigidbody.GetComponent<Grabber>().GrabBorder(leftBorder.GetComponent<Border>());
+                }
             }
             else
             {
-                rigidbody.AddForce(directionFromGhoulToWall * addForceWhenGhoulFalls);
+                rigidbody.AddForce(forceToApply, ForceMode2D.Impulse);
+                //print("i pushed! " + forceToApply);
+
+            }
+            if (leftGhoulTimer >= cdBetweenDamage)
+            {
+                collision.transform.GetComponent<Health>().TakeDamage(damage);
+                leftGhoulTimer = 0;
+            }
+        }
+
+        if (collision.transform.CompareTag("RightGhoul"))
+        {
+            float borderX = rightBorder.transform.position.x;
+            float pointAtBorderY = transform.position.y + 8 + 10;
+
+            float distanceToWall = rightBorder.GetComponent<Border>().GetDistanceFromPlayer();
+            Vector2 pointAtBorder = new Vector2(borderX, pointAtBorderY);
+            Vector2 directionFromGhoulToWall = pointAtBorder.normalized;
+            Vector2 forceToApply = directionFromGhoulToWall * (addForceWhenGhoulFalls * (1 - (1 / distanceToWall)));
+            //print(distanceToWall);
+            Rigidbody2D rigidbody = collision.transform.GetComponent<Rigidbody2D>();
+            if (distanceToWall < maxDistanceToGetPush && distanceToWall != Mathf.Infinity)
+            {
+                if (rigidbody.GetComponent<Grabber>().GetIsGrabbing())
+                {
+                    rigidbody.velocity = Vector2.up * pushUpForce;
+                }
+                else
+                {
+                    rigidbody.velocity = Vector2.up * pushUpForce;
+                    rigidbody.GetComponent<Grabber>().GrabBorder(rightBorder.GetComponent<Border>());
+                }
+            }
+            else
+            {
+                rigidbody.AddForce(forceToApply, ForceMode2D.Impulse);
 
             }
             if (rightGhoulTimer >= cdBetweenDamage)
             {
                 collision.transform.GetComponent<Health>().TakeDamage(damage);
                 rightGhoulTimer = 0;
-            }
-        }
-
-        if (collision.transform.CompareTag("LeftGhoul"))
-        {
-            float borderX = leftBorder.transform.position.x;
-            float pointAtBorderY = transform.position.y + 8 + 6;
-
-            float distanceToWall = (Mathf.Abs(leftBorder.transform.position.x) - Mathf.Abs(collision.transform.position.x));
-
-            Vector2 directionFromGhoulToWall = new Vector2(borderX, pointAtBorderY) + (Vector2.up * (distanceToWall * 4));
-            Rigidbody2D rigidbody = collision.transform.GetComponent<Rigidbody2D>();
-            if (distanceToWall < .6) // todo change this shit
-            {
-                rigidbody.velocity = Vector2.up * 50;
-            }
-            else
-            {
-                rigidbody.AddForce(directionFromGhoulToWall * addForceWhenGhoulFalls);
-
-            }
-
-            if (leftGhoulTimer >= cdBetweenDamage)
-            {
-                collision.transform.GetComponent<Health>().TakeDamage(damage);
-                leftGhoulTimer = 0;
             }
         }
     }

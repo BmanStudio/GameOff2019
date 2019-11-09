@@ -24,7 +24,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(int damage)
     {
         healthFloat -= damage;
-        print("damaga " + damage + "health" + healthFloat);
+        //print("damaga " + damage + "health" + healthFloat);
     }
 
     public float GetHealthPrecent()

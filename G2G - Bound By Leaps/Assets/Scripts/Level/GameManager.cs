@@ -58,7 +58,7 @@ namespace Game.Manager
 
         public void ToggleSlowMo(bool toggle)
         {
-            //print("pee" + toggle) ;
+            //Debug.Break();
             isSlowMo = toggle;
         }
 

@@ -30,17 +30,6 @@ public class PushScreenUp : MonoBehaviour
             {
                 needToMove = false;
             }
-            //Vector2 newPositionToMoveCamera = cameraPos + 
-/*
-
-            float offset = Mathf.Clamp(maxPlayerTopPosition - cameraPos.y, 0, ;
-            float offsetToMove = Mathf.Lerp(cameraPos.y, cameraPos.y + offset, .1f);
-            print(offsetToMove);
-            Camera.main.transform.Translate(new Vector3(0, cameraPos.y + offsetToMove, 0) * Time.deltaTime * pushSpeed);
-            if (offsetToMove <= 0)
-            {
-                needToMove = false;
-            }*/
         }
     }
 
