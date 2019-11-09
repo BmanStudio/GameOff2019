@@ -1,34 +1,45 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] int startingHealth = 100;
     [SerializeField] int healthRegenPerSecond = 2;
 
-    private int healthInt;
-    private float healthFloat;
+    private float healthPoints;
+
+    [SerializeField] UnityEvent onPlayerDeath;
 
     private void Awake()
     {
-        healthFloat = startingHealth - 20;
+        healthPoints = startingHealth - 20;
     }
 
     private void Update()
     {
-        healthFloat = Mathf.Clamp(healthFloat + (healthRegenPerSecond * Time.deltaTime), 0, startingHealth);
-        healthInt = Mathf.RoundToInt(healthFloat);
+        healthPoints = Mathf.Clamp(healthPoints + (healthRegenPerSecond * Time.deltaTime), 0, startingHealth);
+        if (healthPoints == 0)
+        {
+            DeathSequance();
+        }
+    }
+
+    private void DeathSequance()
+    {
+        onPlayerDeath.Invoke();
+        // todo particle VFX
     }
 
     public void TakeDamage(int damage)
     {
-        healthFloat -= damage;
-        //print("damaga " + damage + "health" + healthFloat);
+        healthPoints -= damage;
     }
 
-    public float GetHealthPrecent()
+    public float GetHealthFraction()
     {
-        return healthFloat / (float)startingHealth;
+        return healthPoints / (float)startingHealth;
     }
 }

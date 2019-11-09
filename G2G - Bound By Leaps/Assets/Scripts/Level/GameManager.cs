@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
 
 namespace Game.Manager
 {
@@ -13,6 +14,7 @@ namespace Game.Manager
 
         [SerializeField] UnityEvent leftPlayerEnabled;
         [SerializeField] UnityEvent rightPlayerEnabled;
+        [SerializeField] UnityEvent gameStop;
 
         private bool isSlowMo = false;
         private float currSlowMoDelta = 1;
@@ -65,6 +67,18 @@ namespace Game.Manager
         public bool GetIsSLowMo()
         {
             return isSlowMo;
+        }
+
+        public void StopGame()
+        {
+            gameStop.Invoke();
+            Time.timeScale = Mathf.Lerp(Time.timeScale, 0, 1000);
+        }
+
+        public void RestartGame()
+        {
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.buildIndex);
         }
     }
 }

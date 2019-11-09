@@ -19,12 +19,12 @@ public class HealthBarManager : MonoBehaviour
     {
         Vector2 leftHealthPosition = leftHealthBarPos.transform.position;
         leftHealthBar.transform.position = leftHealthPosition;
-        leftHealthBar.Find("HealthFill").GetComponent<Image>().fillAmount = leftPlayerHealth.GetHealthPrecent();
+        leftHealthBar.Find("HealthFill").GetComponent<Image>().fillAmount = leftPlayerHealth.GetHealthFraction();
 
 
         Vector2 rightHealthPosition = rightHealthBarPos.transform.position;
         rightHealthBar.transform.position = rightHealthPosition;
-        rightHealthBar.Find("HealthFill").GetComponent<Image>().fillAmount = rightPlayerHealth.GetHealthPrecent();
+        rightHealthBar.Find("HealthFill").GetComponent<Image>().fillAmount = rightPlayerHealth.GetHealthFraction();
 
     }
 }

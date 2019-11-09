@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject leftShade;
     [SerializeField] GameObject rightShade;
 
+    [SerializeField] GameObject gameOverWindow;
+
     private void Start()
     {
         UpdateHeightText(0);
@@ -31,5 +33,13 @@ public class UIManager : MonoBehaviour
             leftShade.GetComponent<CanvasGroup>().alpha = 1;
             rightShade.GetComponent<CanvasGroup>().alpha = 0;
         }
+    }
+
+    public void ActiveGameOverWindow()
+    {
+        gameOverWindow.SetActive(true);
+        leftShade.GetComponent<CanvasGroup>().alpha = 1;
+        rightShade.GetComponent<CanvasGroup>().alpha = 1;
+
     }
 }

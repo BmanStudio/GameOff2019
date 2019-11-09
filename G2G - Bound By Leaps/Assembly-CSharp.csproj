@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\HealthBarManager.cs" />
+    <Compile Include="Assets\IronSparklesManager.cs" />
     <Compile Include="Assets\Scripts\Level\Border.cs" />
     <Compile Include="Assets\Scripts\Level\FollowCam.cs" />
     <Compile Include="Assets\Scripts\Level\GameManager.cs" />
